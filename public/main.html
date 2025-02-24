@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University IT Forum</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script defer src="js/main.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">AITU IT Discussion Forum</div>
+        <div class="menu">
+            <a href="/">main</a>
+            <a href="/main">topics</a>
+            <a href="#">help</a>
+            <a href="profile.html">profile</a>
+        </div>
+    </div>
+    <div class="main">
+        <div class="sidebar">
+        </div>
+        <div class="forum-section">
+            <h1>Обсуждение: Новая версия Python</h1>
+            <div class="add-topic" style="margin-bottom: 50px;">
+                <h2>Добавить новую тему</h2>
+                <form id="add-topic-form">
+                    <label for="topic-name">Название темы:</label>
+                    <input type="text" id="topic-name" name="topic-name" required>
+                    <button type="submit">Добавить</button>
+                </form>
+                <div id="notification-area" style="margin-bottom: 50px; margin-top: 50px;"></div>
+            </div>
+            <div class="post" id="topics-list" style="margin-bottom: 50px; margin-top: 50px;">
+                <!-- темы-->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

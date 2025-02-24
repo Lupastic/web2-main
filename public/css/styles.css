@@ -1,0 +1,457 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  border-bottom: 1px solid #000;
+}
+.notification {
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  color: white;
+}
+
+.notification.success {
+  background-color: #4CAF50; /* Green */
+}
+
+.notification.error {
+  background-color: #f44336; /* Red */
+}
+
+.notification.warning {
+  background-color: #ff9800; /* Orange */
+  color: black;
+}
+
+.notification.info {
+  background-color: #2196F3; /* Blue */
+}
+.logo {
+  font-size: 1.5em;
+  color: #2a9d8f;
+  font-weight: bold;
+}
+
+.menu {
+  display: flex;
+  gap: 20px;
+  font-size: 1em;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #000;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.sidebar {
+  flex: 1;
+  max-width: 200px;
+  padding: 20px;
+  font-size: 1em;
+  color: #000;
+}
+.sidebar button{
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #2a9d8f;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.content {
+  flex: 2;
+  padding: 20px;
+  text-align: left;
+}
+
+.content h1 {
+  font-size: 2em;
+  color: #000;
+}
+
+.content p {
+  font-size: 1em;
+  color: #555;
+  margin: 10px 0;
+}
+
+.content .buttons {
+  margin-top: 20px;
+}
+.content .a a{
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #2a9d8f;
+  border: 3px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.content .a a:hover{
+  background-color: #264653;
+}
+.content .buttons button {
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #2a9d8f;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.content .buttons button:hover {
+  background-color: #264653;
+}
+
+.image {
+  flex: 1;
+  max-width: 300px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image img {
+  border-radius: 8px;
+}
+/* General layout for topics */
+.topic-card {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 15px;
+margin: 10px 0;
+background-color: #f9f9f9;
+border: 1px solid #ddd;
+border-radius: 8px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.topic-card:hover {
+background-color: #f0f8ff;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Topic name styling */
+.topic-content .topic-name {
+font-size: 16px;
+font-weight: bold;
+color: #333;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+
+/* Action buttons */
+.topic-actions {
+display: flex;
+gap: 10px;
+}
+
+.topic-actions button {
+padding: 8px 12px;
+font-size: 14px;
+color: #fff;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+.topic-actions .edit-btn {
+background-color: #4caf50;
+}
+
+.topic-actions .edit-btn:hover {
+background-color: #45a049;
+}
+
+.topic-actions .delete-btn {
+background-color: #f44336;
+}
+
+.topic-actions .delete-btn:hover {
+background-color: #d32f2f;
+}
+/* styles.css */
+
+:root {
+--primary-color: #007bff;  /* A standard blue for buttons and highlights */
+--secondary-color: #6c757d; /* A grey for less important elements */
+--danger-color: #dc3545;    /* Red, used for delete actions */
+--success-color: #28a745;   /* Green, could be used for success messages */
+--warning-color: #ffc107;   /* Yellow, use sparingly for warnings */
+--light-color: #f8f9fa;    /* Very light grey for backgrounds or accents */
+--dark-color: #343a40;     /* Dark grey for main text */
+--box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* A subtle shadow for depth */
+--border-radius: 5px;       /* Rounded corners */
+}
+
+body {
+font-family: 'Roboto', sans-serif;
+margin: 0;
+padding: 0;
+background-color: var(--light-color);
+color: var(--dark-color);
+}
+
+/* Navbar Styles */
+.navbar {
+background-color: var(--dark-color);
+color: var(--light-color);
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 15px 30px;
+box-shadow: var(--box-shadow);
+}
+
+.logo {
+font-size: 1.5rem;
+font-weight: 700;
+}
+
+.menu a {
+color: var(--light-color);
+text-decoration: none;
+margin-left: 20px;
+font-weight: 500;
+transition: color 0.3s ease;
+}
+
+.menu a:hover {
+color: var(--primary-color);
+}
+
+/* Main Content Styles */
+.main {
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 20px;
+min-height: calc(100vh - 60px); /* Adjust based on navbar height */
+}
+
+.profile-container {
+background-color: white;
+border-radius: var(--border-radius);
+box-shadow: var(--box-shadow);
+width: 80%;
+max-width: 600px;
+overflow: hidden; /* Prevents issues with content overflowing */
+}
+
+.profile-header {
+background-color: var(--primary-color);
+color: var(--light-color);
+text-align: center;
+padding: 20px;
+border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.profile-header h1 {
+margin: 0;
+font-size: 2rem;
+}
+
+.profile-body {
+padding: 20px;
+}
+
+#profile-details {
+margin-bottom: 20px;
+line-height: 1.6;
+}
+
+#profile-details p {
+margin: 8px 0;
+}
+
+/* Button Styles */
+.button-container {
+display: flex;
+justify-content: space-around;
+margin-bottom: 15px;
+}
+
+.action-button {
+padding: 12px 25px;
+border: none;
+border-radius: var(--border-radius);
+color: white;
+background-color: var(--primary-color);
+cursor: pointer;
+font-size: 1rem;
+transition: background-color 0.3s ease;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.action-button:hover {
+background-color: darken(var(--primary-color), 10%);
+}
+
+.action-button.delete {
+background-color: var(--danger-color);
+}
+
+.action-button.delete:hover {
+background-color: darken(var(--danger-color), 10%);
+}
+
+.action-button.logout {
+background-color: var(--secondary-color);
+}
+
+.action-button.logout:hover {
+background-color: darken(var(--secondary-color), 10%);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+.profile-container {
+    width: 95%;
+}
+
+.button-container {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.action-button {
+    margin-bottom: 10px;
+}
+}
+/* General Styling */
+body {
+font-family: 'Arial', sans-serif;
+background-color: #f4f4f4;
+margin: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+}
+
+/* Login Container */
+.login-container {
+width: 100%;
+max-width: 400px;
+padding: 20px;
+}
+
+/* Login Card */
+.login-card {
+background-color: #fff;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+padding: 30px;
+}
+
+/* Form Title */
+.login-card h1 {
+text-align: center;
+color: #333;
+margin-bottom: 20px;
+}
+
+/* Form Group */
+.form-group {
+margin-bottom: 20px;
+}
+
+.form-group label {
+display: block;
+margin-bottom: 5px;
+color: #555;
+font-weight: bold;
+}
+
+/* Input with Icon */
+.input-group {
+position: relative;
+display: flex;
+align-items: center;
+}
+
+.input-group i {
+position: absolute;
+left: 10px;
+color: #888;
+font-size: 16px;
+}
+
+.input-group input {
+padding: 10px 10px 10px 35px; /* Space for icon */
+border: 1px solid #ccc;
+border-radius: 5px;
+width: 100%;
+box-sizing: border-box; /* Important for width calculation */
+}
+
+/* Login Button */
+.login-button {
+background-color: #4CAF50;
+color: white;
+padding: 12px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+width: 100%;
+font-size: 16px;
+transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+background-color: #3e8e41;
+}
+
+/* Signup Link */
+.signup-link {
+margin-top: 20px;
+text-align: center;
+color: #777;
+}
+
+.signup-link a {
+color: #4CAF50;
+text-decoration: none;
+}
+
+.signup-link a:hover {
+text-decoration: underline;
+}
