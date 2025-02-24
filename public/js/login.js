@@ -5,7 +5,7 @@ async function handleLogin(event) {
     const password = document.getElementById('password').value;
 
     if (!email || !password) {
-        alert('All fields are required!');
+        showNotification('All fields are required!', 'error');
         return;
     }
     try {
@@ -21,22 +21,39 @@ async function handleLogin(event) {
             const data = await response.json();
             localStorage.setItem('token', data.token);
             localStorage.setItem('userId', data.userId);
-            alert("Login was successful!");
+            showNotification("Login was successful!", 'success');
             window.location.href = `/main`;
 
         } else {
             try {
                 const errorData = await response.json();
-                alert('Login Error: ' + (errorData.error || 'An unknown error occurred.'));
+                showNotification('Login Error: ' + (errorData.error || 'An unknown error occurred.', 'error'));
             } catch (jsonError) {
                 console.error("Error parsing JSON error response:", jsonError);
-                alert("Login failed. An error occurred.");
+                showNotification("Login failed. An error occurred.", 'error');
             }
         }
     } catch (error) {
         console.error('Error during login:', error);
-        alert('Failed to login. Please check your connection and try again.');
+        showNotification('Failed to login. Please check your connection and try again.', 'error');
     }
 }
 
 document.getElementById('login-form').addEventListener('submit', handleLogin);
+
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.classList.add('notification');
+    notification.classList.add(type);
+    notification.textContent = message;
+
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+        notification.classList.add('notification-fade-out'); // Use CSS class for fade-out
+
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 500); // Matches transition duration
+    }, 3000);
+}
