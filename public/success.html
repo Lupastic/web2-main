@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Success</title>
+</head>
+<body>
+    <h1>Success!</h1>
+    <p id="success-message"></p>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const message = urlParams.get('message');
+        document.getElementById('success-message').textContent = message;
+
+        setTimeout(() => {
+            window.location.href = '/profile.html'; 
+        }, 3000); // Redirect after 3 seconds
+    </script>
+</body>
+</html>

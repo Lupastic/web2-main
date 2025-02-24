@@ -32,28 +32,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const topics = await response.json();
             topicsList.innerHTML = topics.map(topic => `
-                <div class="topic-card" data-id="${topic.topic_id}" data-user-id="${topic.user_id}">
-                    <div class="topic-content">
-                        <span class="topic-name">${topic.title}</span>
-                        <span class="topic-author">By: ${topic.username}</span> <!-- Display author username -->
+                <div class="topic-card" data-id="${topic.topic_id}" data-user-id="${topic.user_id}" style="border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 8px; background: #f9f9f9;">
+                    <div class="topic-header" style="text-align: center; margin-bottom: 8px;">
+                        <h3 style="margin: 0; font-size: 18px;">${topic.title}</h3>
+                        <p style="margin: 0; font-size: 14px; color: gray;">By: ${topic.username}</p>
                     </div>
-                    <div class="topic-actions">
-                        <button class="edit-toggle-btn" style="background-color: green; color: white;">Edit</button>
-                        <button class="delete-btn" style="background-color: red; color: white;">Delete</button>
-                        <button class="comment-toggle-btn" style="background-color: blue; color: white;">Comment</button>
-                        <button class="view-all-comments-btn" style="background-color: gray; color: white;">View All Comments</button>
-                        <button class="like-btn" style="background-color: orange; color: white;">Like</button> <span class="likes-count">${topic.likes_count || 0}</span>
+                    <div class="topic-actions" style="display: flex; justify-content: space-around; margin-top: 10px;">
+                        <button class="edit-toggle-btn" style="background-color: green; color: white; padding: 5px 10px; border-radius: 5px;">Edit</button>
+                        <button class="delete-btn" style="background-color: red; color: white; padding: 5px 10px; border-radius: 5px;">Delete</button>
+                        <button class="comment-toggle-btn" style="background-color: blue; color: white; padding: 5px 10px; border-radius: 5px;">Comment</button>
+                        <button class="view-all-comments-btn" style="background-color: gray; color: white; padding: 5px 10px; border-radius: 5px;">View Comments</button>
+                        <button class="like-btn" style="background-color: orange; color: white; padding: 5px 10px; border-radius: 5px;">Like</button>
+                        <span class="likes-count" style="font-weight: bold; margin-left: 5px;">${topic.likes_count || 0}</span>
                     </div>
-                    <div class="edit-section" style="display: none; margin-top: 10px; padding: 10px; background: #eef; border-radius: 5px;">
-                        <input type="text" class="edit-input" value="${topic.title}" style="width: 80%; padding: 5px; border: 1px solid #ccc; border-radius: 5px;" />
+                    <div class="edit-section" style="display: none; margin-top: 15px; padding: 10px; background: #eef; border-radius: 5px;">
+                        <input type="text" class="edit-input" value="${topic.title}" style="width: 90%; padding: 5px; border: 1px solid #ccc; border-radius: 5px;" />
                         <button class="submit-edit-btn" style="background-color: darkgreen; color: white; padding: 5px 10px; border-radius: 5px;">Save</button>
                     </div>
-                    <div class="comment-section" style="display: none; margin-top: 10px; padding: 10px; background: #eef; border-radius: 5px;">
-                        <input type="text" class="comment-input" placeholder="Enter your comment" style="width: 80%; padding: 5px; border: 1px solid #ccc; border-radius: 5px;" />
+                    <div class="comment-section" style="display: none; margin-top: 15px; padding: 10px; background: #eef; border-radius: 5px;">
+                        <input type="text" class="comment-input" placeholder="Enter your comment" style="width: 90%; padding: 5px; border: 1px solid #ccc; border-radius: 5px;" />
                         <button class="submit-comment-btn" style="background-color: darkblue; color: white; padding: 5px 10px; border-radius: 5px;">Submit</button>
                     </div>
-                </div>
-                <div class="comments-list" id="comments-${topic.topic_id}" style="border-left: 4px solid #ccc; padding: 10px; margin-top: 10px; background-color: #f9f9f9; border-radius: 5px;">
+                    <div class="comments-list" id="comments-${topic.topic_id}" style="display: none; border-left: 4px solid #ccc; padding: 10px; margin-top: 10px; background-color: #fff; border-radius: 5px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);">
+                    </div>
                 </div>
             `).join('');
         } catch (error) {
@@ -61,6 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
             showNotification(`Could not load topics. Please try again. Error: ${error.message}`, 'error');
         }
     };
+    
+    
 
     addTopicForm.addEventListener('submit', async (e) => {
         e.preventDefault();

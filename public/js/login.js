@@ -8,8 +8,6 @@ async function handleLogin(event) {
         alert('All fields are required!');
         return;
     }
-
-
     try {
         const response = await fetch('/api/users/login', {
             method: 'POST',
